@@ -5,40 +5,50 @@ import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.MapsId;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.Transient;
-
-import project.hospital.domain.general.Person;
 import project.hospital.domain.security.utils.PasswordStorage.CannotPerformOperationException;
 import project.hospital.domain.security.utils.PasswordStorage.InvalidHashException;
 
-
-
-
 @Entity
 @Table(name = "account")
-public class Account implements Comparable<Account>{
+public class Account implements Comparable<Account> {
 
 	@Id
-	@Column(name="userName")
+	@Column(name = "userName")
 	private String userName;
-	
-	@Column(name="passWord")
+
+	@Column(name = "passWord")
 	private String passWord;
-	
-	@OneToOne
-	@JoinColumn(name = "accountHolder", foreignKey = @ForeignKey(name = "accountholder"))
-	private Person accountHolder;
-	
-	public Account(){
-	
+
+	@Column(name = "email")
+	private String email;
+
+	// @OneToOne
+	// @JoinColumn(name = "accountHolder", foreignKey = @ForeignKey(name =
+	// "accountholder"))
+	// private Person accountHolder;
+
+	@Column(name = "Enabled")
+	private boolean isEnabled = false;
+
+	public Account() {
+
 	}
-	
-	public Account(String userName, String passWord){
+
+	public Account(String userName) {
+		this.userName = userName;
+	}
+
+	public Account(String userName, String passWord) {
 		this.userName = userName;
 		this.passWord = passWord;
+	}
+
+	public Account(String userName, String passWord, String email) {
+		this.userName = userName;
+		this.passWord = passWord;
+		this.email = email;
 	}
 
 	public String getUserName() {
@@ -56,20 +66,34 @@ public class Account implements Comparable<Account>{
 	public void setPassWord(String passWord) {
 		this.passWord = passWord;
 	}
-	
 
-	public Person getAccountHolder() {
-		return accountHolder;
+	public String getEmail() {
+		return email;
 	}
 
-	public void setAccountHolder(Person accountHolder) {
-		this.accountHolder = accountHolder;
+	public void setEmail(String email) {
+		this.email = email;
 	}
-		
-	public Account login(Account a) throws CannotPerformOperationException, InvalidHashException{
+
+	// public Person getAccountHolder() {
+	// return accountHolder;
+	// }
+	//
+	// public void setAccountHolder(Person accountHolder) {
+	// this.accountHolder = accountHolder;
+	// }
+
+	public Account login(Account a) throws CannotPerformOperationException, InvalidHashException {
 		return null;
 	}
 
+	public boolean isEnabled() {
+		return isEnabled;
+	}
+
+	public void setEnabled(boolean isEnabled) {
+		this.isEnabled = isEnabled;
+	}
 
 	@Override
 	public int hashCode() {
@@ -96,30 +120,35 @@ public class Account implements Comparable<Account>{
 		return true;
 	}
 
-	public int compareTo(Account o){
-		
-		if(!this.getUserName().equals(o.getUserName())){
+	public int compareTo(Account o) {
+
+		if (!this.getUserName().equals(o.getUserName())) {
 			return this.getUserName().compareToIgnoreCase(o.getUserName());
 		}
-		
+
 		return 0;
-		
+
 	}
 
 	@Override
 	public String toString() {
-		return accountHolder + " - username: " + userName;
+		return "Account [userName=" + userName + ", passWord=" + passWord + ", email=" + email + ", isEnabled="
+				+ isEnabled + "]";
 	}
-	
-	public String toStringDisplay(){
-		return accountHolder.getFirstName() + " " + accountHolder.getInsertion() + " " + accountHolder.getLastName();
-	}
-	
-	public String toStringFunction(){
-		return accountHolder.getClass().getSimpleName();
-		
-	}
-	
-	
-	
+
+	// @Override
+	// public String toString() {
+	// return accountHolder + " - username: " + userName;
+	// }
+	//
+	// public String toStringDisplay(){
+	// return accountHolder.getName() + " " + accountHolder.getInsertion() + " " +
+	// accountHolder.getLastName();
+	// }
+	//
+	// public String toStringFunction(){
+	// return accountHolder.getClass().getSimpleName();
+	//
+	// }
+
 }

@@ -1,40 +1,43 @@
 package project.hospital.main;
 
-import org.hibernate.Session;
-import org.hibernate.Transaction;
+import java.util.UUID;
 
-import project.hospital.domain.general.Person;
+import org.mindrot.jbcrypt.BCrypt;
+
 import project.hospital.domain.security.Account;
-import project.hospital.hibernate.DAOfactory.HibernateDAOFactory;
+import project.hospital.domain.security.AccountManager;
+import project.hospital.domain.security.ValidationToken;
+import project.hospital.domain.security.utils.PasswordStorage;
 
 public class main {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception {
 
 	
 		
+		//ValidationToken token = new ValidationToken(); 
+	
+//		String password = "1234";
 		
-		//open de session
-		Session ses = HibernateDAOFactory.getSession();
-		 
-		//start de transaction
-		Transaction ts = ses.beginTransaction();
-		               
-		//maak een EducationTeam aan
-		Account ac = new Account();
-		Person p = null;
+//		String hassedPassword = BCrypt.hashpw(password, BCrypt.gensalt(12));
+//
+//		Account ac = new Account("meneer", hassedPassword, "ismet-meray@hotmail.com");
+//				
+//		AccountManager.getInstance().createAccount(ac);
+//		token.setAccount(ac);
+//		token.setToken(UUID.randomUUID().toString());
+//		AccountManager.getInstance().createAccountToken(token);
+//		
+//		System.out.println(ac.getEmail());
 		
-		ac.setAccountHolder(p);
-		 
-		//hier wordt opdracht gegeven om het EducationTeam op te slaan in de database
-		ses.save(ac);
-		 
-		//hier worden alle opgegeven opdrachten uitgevoerd
-		ts.commit();
-		 
-		//vergeet niet de session en HibernateDAO af te sluiten
-		ses.close();
-		HibernateDAOFactory.shutdown();
+//		MailHelper.createAccountEmail(ac.getEmail(), token.getToken());
+//		
+
+//		MYSQLDAOAccount.getInstance().createAccount(ac);
+		
+		Account a = new Account("meneer", "1234");
+		
+		AccountManager.getInstance().userLogin(a);
 		
 		
 	}

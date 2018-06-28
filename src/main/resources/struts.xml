@@ -8,7 +8,7 @@
 
 	<constant name="struts.devMode" value="true" />
 
-	<package name="pasimo" namespace="/" extends="struts-default">
+	<package name="default" namespace="/" extends="struts-default">
 		<!-- strict-method-invocation="true"> -->
 
 		<interceptors>
@@ -20,17 +20,27 @@
 			</interceptor-stack>
 		</interceptors>
 
-
 		<action name="index">
 			<result>/index.jsp</result>
 		</action>
-
-		<action name="showLogin">
-			<interceptor-ref name="LoginStack"></interceptor-ref>
-			<result>/view/security/login.jsp</result>
-			<result name="login">/view/security/login.jsp</result>
+		
+		<action name="dateTag"
+			class="project.hospital.controller.utils.DateController"
+			method="execute">
+			<result name="success">/WEB-INF/tags/basePasimoLayout.tag</result>
 		</action>
-
+		
+		<action name="showMainPage"
+			class="project.hospital.controller.base.HomeAction" method="execute">
+			<interceptor-ref name="LoginStack"></interceptor-ref>
+			<result>/view/security/HomePage.jsp</result>
+			<result name="login">/view/security/login.jsp</result>
+			<result name="success">/view/security/HomePage.jsp</result>
+		</action>
+	
 	</package>
 
+		<include file="account/struts-account.xml"/>
+	
+	
 </struts>  

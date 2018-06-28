@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+						"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<package name="account" namespace="/" extends="default">
+
+		<action name="loadLogin"
+			class="project.hospital.controller.security.AccountController"
+			method="Execute">
+			<interceptor-ref name="store">
+				<param name="operationMode">RETRIEVE</param>
+			</interceptor-ref>
+			<result name="success">/index.jsp</result>
+		</action>
+		
+		<action name="userLogin"
+			class="project.hospital.controller.security.AccountController"
+			method="userLogin">
+			<interceptor-ref name="defaultStack" />
+			<result name="login" type="redirectAction">loadLogin</result>
+			<result name="success" type="redirectAction">showMainPage</result>
+		</action>
+
+		<action name="doLogout" 
+		    class="project.hospital.controller.security.Logout" 
+		    method="logout">
+			<result>/view/general/redirect.jsp</result>
+			<result name="login">/view/security/login.jsp</result>
+			<result name="success">/view/security/redirect.jsp</result>
+		</action>
+
+		<action name="createAccount"
+			class="project.hospital.controller.security.AccountController"
+			method="createAccount">
+			<interceptor-ref name="store">
+				<param name="operationMode">STORE</param>
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack" />
+			<result name="success">/login.jsp</result>
+			<result name="success" type="redirectAction">loadLogin</result>
+		</action>
+
+		<action name="activateAccount"
+			class="project.hospital.controller.security.AccountController"
+			method="activateAccount">
+			<interceptor-ref name="store">
+				<param name="operationMode">STORE</param>
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack" />
+			<result name="login" type="redirectAction">loadLogin</result>
+			<result name="success" type="redirectAction">loadLogin</result>
+		</action>
+
+		
+
+		<action name="resetPasswordSetup"
+			class="project.hospital.controller.security.AccountController"
+			method="resetPasswordSetup">
+			<interceptor-ref name="store">
+				<param name="operationMode">STORE</param>
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack" />
+			<result name="success" type="redirectAction">loadLogin</result>
+		</action>
+
+		<action name="executeResetPassword"
+			class="project.hospital.controller.security.AccountController"
+			method="executeResetPassword">
+			<result name="success">/jsp/resetPassword.jsp</result>
+		</action>
+
+		<action name="resetPassword"
+			class="project.hospital.controller.security.AccountController"
+			method="resetPassword">
+			<interceptor-ref name="store">
+				<param name="operationMode">STORE</param>
+			</interceptor-ref>
+			<interceptor-ref name="defaultStack" />
+			<result name="success" type="redirectAction">loadLogin</result>
+		</action>
+
+		<action name="quickUser"
+			class="project.hospital.controller.security.AccountController"
+			method="quickUser">
+			<result name="success">/jsp/homepage.jsp</result>
+		</action>
+
+	</package>
+</struts>

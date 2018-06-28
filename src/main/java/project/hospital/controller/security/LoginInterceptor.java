@@ -33,8 +33,10 @@ public class LoginInterceptor extends AbstractInterceptor
 		 Map<String, Object> session =
 		 invocation.getInvocationContext().getSession();
 		 
-		  Object loggedOnUser = session.get("loggedin"); if(loggedOnUser ==
-		 null){ return Action.LOGIN; }
+		  Object loggedOnUser = session.get("loggedin"); 
+		  if(loggedOnUser ==null){
+			  return Action.LOGIN; 
+			}
 		 
 		return invocation.invoke();
 	}

@@ -57,10 +57,10 @@
 			<!-- Logo -->
 
 			<a href="<s:url value='/index.jsp'/>" class="logo"> <!-- mini logo for sidebar mini 50x50 pixels -->
-				<span class="logo-mini">PAS</span> <!-- logo for regular state and mobile devices -->
-				<span class="logo-lg"><b>Pas</b>Imo<img
-					style="height: 50px; filter: brightness(0) invert(1);"
-					src="<s:url value="/images/dolphin-min.png"></s:url>" /></span>
+				<span class="logo-mini">Sim</span> <!-- logo for regular state and mobile devices -->
+				<span class="logo-lg"><b>Simu</b>Lator<img
+					style="height: 50px;"
+					src="<s:url value="/images/download.png"></s:url>" /></span>
 			</a>
 
 			<!-- /.Logo -->
@@ -91,7 +91,7 @@
 								src="<s:url value="/images/avatars/Albert Einstein.jpg"></s:url>"
 								class="user-image" alt="User Image"> <!-- hidden-xs hides the username on small devices so only the image appears. -->
 								<span class="hidden-xs">Welcome,
-									${account.toStringDisplay()}</span>
+									</span>
 						</a>
 							<ul class="dropdown-menu">
 								<!-- The user image in the menu -->
@@ -102,17 +102,13 @@
 									class="img-circle" alt="User Image">
 
 									<p>
-										${account.toStringDisplay()} (${account.getUserName()}) <small>${account.toStringFunction()}</small>
+										<small></small>
 									</p>
 								</li>
 
 								<!-- Menu Footer-->
 								<li class="user-footer">
-									<div class="pull-left">
-										<a href="<s:url action='showProfile' namespace='/security'/>"
-											class="btn btn-default btn-flat">Profile</a>
-									</div>
-									<div class="pull-right">
+									<div class="">
 										<a href="<s:url action='doLogout'/>"
 											class="btn btn-default btn-flat">Sign out</a>
 									</div>
@@ -149,81 +145,26 @@
 					<!-- ******************** Teacher ******************** -->
 					<li><a
 						href="<s:url action="TeacherOverview" namespace="/teacher"/>">
-							<i class="glyphicon glyphicon-user"></i><span> Overzicht
-								Docenten</span>
+							<i class="glyphicon glyphicon-user"></i><span> Show
+							Charachters</span>
 					</a></li>
 
 					<li><a
 						href="<s:url action="Studentview" namespace="/student"/>"><i
-							class="glyphicon glyphicon-credit-card"></i> <span>Student
-								overzicht </span></a></li>
+							class="glyphicon glyphicon-credit-card"></i> <span>Show
+							Profile</span></a></li>
 
 					<li><a href="<s:url action="showEducationTeam"/>"><i
-							class="fa fa-university"></i> <span>Info Opleidingsteam</span></a></li>
+							class="fa fa-university"></i> <span>Friends</span></a></li>
 
 					<!-- **************************** Start of menu educationteams **************************** -->
 
 					<li><a href="<s:url action="educationTeam" namespace="/educationteam"/>">
-							<i class="fa fa-users"></i><span> Educatieteams</span>
+							<i class="fa fa-users"></i><span> Clan</span>
 					</a></li>
 					<!-- **************************** Start of menu lessongroups **************************** -->
 
-					<li class="treeview"><a href="#"> <i
-							class="fa fa-mortar-board"></i> <span>Lesgroepen</span> <span
-							class="pull-right-container"> <i
-								class="fa fa-angle-left pull-right"></i>
-						</span>
-					</a>
-						<ul class="treeview-menu">
-
-  <s:action name="showLessonGroup" namespace="/lessonGroup"
-                                                                executeResult="false" var="lessongroup" />
-
-                                                        <s:iterator value="lessonGroups"
-                                                                var="lessongroup">
-
-                                                                <!-- ************************ Start of lessongroups ************************ -->
-                                                                <li class="treeview"><a
-                                                                        href="<s:url action="showLessonGroup" namespace="/lessonGroup" >
-                                                                        <s:param name="lessonGroupName"><s:property value="lessonGroupName"/></s:param> 
-                                                                        </s:url>"><i
-                                                                                class="fa fa-users"></i> <s:property value="lessonGroupName" /><span
-                                                                                class="pull-right-container"> <i
-                                                                                        class="fa fa-angle-left pull-right"></i>
-                                                                        </span> </a>
-                                                                        <ul class="treeview-menu">
-
-                                                                                <!-- ******************** Start of Coachgroups ******************** -->
-
-                                                                                <s:iterator value="#lessongroup.coachGroups" var="coachgroup">
-                                                                                        <s:set var="test" value=""></s:set>
-                                                                                        <li class="treeview"><a
-                                                                                                href="<s:url action="showCoachGroup" namespace="/lessonGroup" ><s:param name="coachGroupName"><s:property value="coachGroupName"/></s:param>
-                                                                                                <s:param name="lessonGroupName"><s:property value="lessonGroupName"/></s:param></s:url>"><i
-                                                                                                        class="fa fa-users"></i> <span><s:property
-                                                                                                                        value="#coachgroup" /></span></a></li>
-                                                                                </s:iterator>
-
-
-									</ul></li>
-							</s:iterator>
-
-							<!-- /.Menu Items -->
-						</ul> <!-- /.Sidebar Menu --> <!-- **************************  Place your test menu items here. ******************* -->
-					<li class="header">Test Menu Items</li>
-					<li><a href="<s:url action="showLessonGroup" namespace="/lessonGroup"/>"><i
-							class="fa fa-circle-o text-red"></i> <span>Lesgroepen </span></a></li>
-					<li><a
-						href="<s:url action="CoachGroup" namespace="/coachGroup"/>"><i
-							class="fa fa-circle-o text-yellow"></i> <span>Coachgroep </span></a></li>
-					<li><a href="<s:url action="Action3"/>"><i
-							class="fa fa-circle-o text-aqua"></i> <span>Action1 </span></a></li>
-
-
-
-					<!-- **************************  End of test menu items here.     ******************* -->
-			</section>
-
+					
 			<!-- /.Section -->
 
 		</aside>
@@ -249,19 +190,18 @@
 
 			<!-- To the right -->
 			<div style="height: 30px" class="pull-right image hidden-xs">
-				<a href="http://www.scalda.nl">Part of <strong>Delphinity
+				<a href="http://portfolioim.atwebpages.com/">Part of <strong>Ismet
 						Software Engineering</strong></a> <img style="height: 100%"
-					src="<s:url value ="/images/dolphin-min.png"/>" />
+					src="<s:url value ="/images/download.png"/>" />
 			</div>
 
 			<!-- /images/scalda-logo-sm.png -->
 			<!-- Default to the left -->
 			<s:set var="start" value="%{'2017'}"></s:set>
 			<s:action name="dateTag" var="now" executeResult="false"></s:action>
-			<strong>Copyright &copy; <s:property value="#start" /> - <s:property
-					value="#now.currentYear" /> <a href="#">Pasimo Development
-					Group</a>.
-			</strong> All rights reserved.
+			<s:property
+					value="#now.currentYear" /> <a href="#">Ismet Development Man</a>.
+			I stole from google
 		</footer>
 
 	</div>

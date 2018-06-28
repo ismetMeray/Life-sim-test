@@ -9,6 +9,7 @@
 		<!-- add annotated resources here -->	
 		<mapping class="project.hospital.domain.general.Person"/>
 		<mapping class="project.hospital.domain.security.Account"/>
+		<mapping class="project.hospital.domain.security.ValidationToken"/>
  		
 	</session-factory>
 
