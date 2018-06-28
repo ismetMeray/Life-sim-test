@@ -1,0 +1,77 @@
+.login-form {
+	width: 30%!important;
+	margin-top: 7.5%!important;
+	padding-top: 15px;
+	background-color: #404040;
+	border-radius: 5px;
+}
+
+.pw-margin-bot-15 {
+	margin-bottom: 15px;
+}
+
+.un-margin-bot-5 {
+	margin-bottom: 5px;
+}
+
+.background:before {
+	content: "";
+	position: fixed;
+  	z-index: -1;
+  
+  	display: block;
+ 	background: url(../../images/HospitalBackground.jpg) no-repeat center center fixed; 
+ 	background-repeat: no-repeat;
+ 	background-size: cover;
+ 	background-position: center;
+ 	width: 100%;
+ 	height: 100%;
+  
+ 	-webkit-filter: blur(10px);
+ 	-moz-filter: blur(10px);
+  	-o-filter: blur(10px);
+  	-ms-filter: blur(10px);
+ 	filter: blur(10px);
+ 	transform: scale(1.1);
+}
+
+.background {
+	position: fixed;
+ 	left: 0;
+ 	right: 0;
+ 	z-index: 0;
+}
+
+a {
+	color: #4db8ff;
+}
+
+a:hover {
+	color: #0099ff;
+}
+
+.error-message {
+	list-style-type: none;
+	font-weight: bold;
+}
+
+ul.error-message {
+	padding: 0px;
+	margin: 0px;
+}
+
+.error-div {
+	border: solid;
+	border-width: thin;
+	border-color: red;
+}
+
+div.alert {
+	width: 30%;
+	position: absolute;
+	text-align: center;
+	margin: 0 auto;
+	top: 15px;
+	left: 50%;
+	transform: translateX(-50%);
+}
